@@ -19,7 +19,7 @@ return array(
             'rock-product' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route'    => '/product[/:action]',                    
+                    'route'    => '/rock/product[/:action]',                    
                     'constraints' => array(
                         'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -33,7 +33,7 @@ return array(
             'rock-detail' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route'    => '/detail[/:action]',                    
+                    'route'    => '/rock/detail[/:action]',                    
                     'constraints' => array(
                         'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',

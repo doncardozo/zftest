@@ -4,6 +4,34 @@ $folderView = "terra";
 $nsController = "Terra\Controller";
 
 return array(
+    'router' => array(
+        'routes' => array(
+            'terra-home' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/terra[/]', # Ruta por defecto.               
+                    'defaults' => array(
+                        'controller' => "$nsController\Index", # Controlador por defecto.
+                        'action' => 'index', # Vista por defecto.
+                    ),
+                ),
+            ),
+            'terra-index' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/terra/index[/:action]',
+                    'constraints' => array(
+                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => "$nsController\Index",
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+        ),
+    ),
     'controllers' => array(
         'invokables' => array(
             "$nsController\Index" => "$nsController\IndexController"
