@@ -1,0 +1,53 @@
+<?php
+
+$folderView = "rock";
+$nsController = "Rock\Controller";
+
+return array(
+    
+    'router' => array(
+        'routes' => array(
+            # Rock
+            'rock-var' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route'    => '/[:module/[:controller[/:action]]]',                    
+                    'constraints' => array(
+                        'module' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        '__NAMESPACE__' => "$nsController",
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            
+        ),
+    ),
+    
+    'controllers' => array(
+        'invokables' => array(
+            "$nsController\Product"=> "$nsController\ProductController",
+            "$nsController\Detail"=> "$nsController\DetailController"
+        )
+    ),
+    
+    'view_manager' => array(
+        'display_not_found_reason' => true,
+        'display_exceptions' => true,
+        'doctype' => 'HTML5',
+        'not_found_template' => 'error/404',
+        'exception_template' => 'error/index',
+        'template_map' => array(
+            'layout/layout' => __DIR__ . "/../view/$folderView/layout/layout.phtml",
+            "$folderView/index/index" => __DIR__ . "/../view/$folderView/index/index.phtml",
+            'error/404' => __DIR__ . "/../view/$folderView/error/404.phtml",
+            'error/index' => __DIR__ . "/../view/$folderView/error/index.phtml",
+        ),
+        'template_path_stack' => array(
+            __DIR__ . '/../view',
+        ),
+    )
+);

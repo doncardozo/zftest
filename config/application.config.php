@@ -7,8 +7,9 @@
  */
 return array(
     'modules' => array(
-        'Application',
-        'Terra'
+        #'Application',
+        'Terra',
+        'Rock'
         ),
     'module_listener_options' => array(
         'module_paths' => array(
