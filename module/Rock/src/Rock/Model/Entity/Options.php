@@ -12,7 +12,8 @@ class Options extends TableGateway {
     }
 
     public function getOption() {
-        $datos = $this->select();
+        #$datos = $this->select();
+        $datos = $this->query('call test();', Adapter::QUERY_MODE_EXECUTE);
         return $datos->toArray();
     }
 
