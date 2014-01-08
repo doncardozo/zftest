@@ -1,0 +1,15 @@
+<ul>
+    <?php foreach ($datos as $row) : ?>
+        <li>
+            <label><?php echo $row["meta_id"]; ?></label>            
+            <button class="btn-primary"><?php echo $row["meta_key"]; ?></button>
+        </li>            
+    <?php endforeach; ?>
+</ul>
+<script type="text/javascript">
+    $(function() {
+        $(document).on("click", "button", function() {
+            $(this).toggleClass("btn-danger");
+        });
+    });
+</script>

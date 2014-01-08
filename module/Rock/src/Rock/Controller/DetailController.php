@@ -4,6 +4,7 @@ namespace Rock\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Rock\Model\Entity\Options;
 
 class DetailController extends AbstractActionController
 {
@@ -17,6 +18,17 @@ class DetailController extends AbstractActionController
     {
         return new ViewModel();
     }
+    
+    public function dataAction() {
+
+        $this->dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter');
+        $u = new Options($this->dbAdapter);
+        $valores = array(
+            "titulo" => "Mostrando datos desde TableGateway",
+            'datos' => $u->getOption()
+        );
+        return new ViewModel($valores);
+    }    
 
 
 }
